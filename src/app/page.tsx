@@ -1,11 +1,10 @@
-import ProductCard from "@/components/products/ProductCard";
-import { getProducts } from "@/services/online-shop";
+import { Suspense } from "react";
+import ProductGrid from "@/components/products/ProductGrid";
+import ProductsLoading from "@/components/products/ProductsLoading";
 
 export const dynamic = "force-dynamic";
 
-export default async function Home() {
-  const { data: products } = await getProducts();
-
+export default function Home() {
   return (
     <div className="w-full">
       <section className="bg-[#f9f9f9]">
@@ -21,21 +20,9 @@ export default async function Home() {
         </div>
       </section>
 
-      <section aria-labelledby="products-heading">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-          <h2
-            id="products-heading"
-            className="text-3xl font-semibold tracking-tight text-[#333333] sm:text-4xl"
-          >
-            Products
-          </h2>
-          <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 lg:gap-8">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <Suspense fallback={<ProductsLoading />}>
+        <ProductGrid />
+      </Suspense>
     </div>
   );
 }
