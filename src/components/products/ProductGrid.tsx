@@ -1,5 +1,5 @@
 import { getProducts } from "@/services/online-shop";
-import ProductCard from "./ProductCard";
+import ProductCatalog from "./ProductCatalog";
 
 export default async function ProductGrid() {
   const { data: products } = await getProducts();
@@ -18,11 +18,7 @@ export default async function ProductGrid() {
             No products are available right now. Please check back later.
           </p>
         ) : (
-          <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 lg:gap-8">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          <ProductCatalog products={products} />
         )}
       </div>
     </section>

@@ -7,6 +7,10 @@ export function formatPrice(price: number): string {
   return priceFormatter.format(price);
 }
 
+export function getCurrentPrice(price: number, discountedPrice: number): number {
+  return discountedPrice < price ? discountedPrice : price;
+}
+
 export function getDiscountPercentage(
   price: number,
   discountedPrice: number,

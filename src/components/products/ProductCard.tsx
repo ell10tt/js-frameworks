@@ -1,7 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/types/product";
-import { formatPrice, getDiscountPercentage } from "@/utils/product";
+import {
+  formatPrice,
+  getCurrentPrice,
+  getDiscountPercentage,
+} from "@/utils/product";
 
 interface ProductCardProps {
   product: Product;
@@ -9,6 +13,10 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const hasDiscount = product.discountedPrice < product.price;
+  const currentPrice = getCurrentPrice(
+    product.price,
+    product.discountedPrice,
+  );
   const discountPercentage = getDiscountPercentage(
     product.price,
     product.discountedPrice,
@@ -55,12 +63,12 @@ export default function ProductCard({ product }: ProductCardProps) {
                   {formatPrice(product.price)}
                 </p>
                 <p className="text-lg font-semibold text-[#333333]">
-                  {formatPrice(product.discountedPrice)}
+                  {formatPrice(currentPrice)}
                 </p>
               </div>
             ) : (
               <p className="text-lg font-semibold text-[#333333]">
-                {formatPrice(product.price)}
+                {formatPrice(currentPrice)}
               </p>
             )}
           </div>

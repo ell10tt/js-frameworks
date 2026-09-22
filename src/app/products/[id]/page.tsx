@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import AddToCartButton from "@/components/products/AddToCartButton";
 import type { Product } from "@/types/product";
 import { OnlineShopApiError, getProduct } from "@/services/online-shop";
 import { formatPrice } from "@/utils/product";
@@ -85,13 +86,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </ul>
             )}
 
-            <button
-              className="mt-8 w-full cursor-not-allowed rounded-sm bg-[#5c5c5c] px-5 py-3 text-sm font-medium text-white opacity-60 sm:w-auto"
-              disabled
-              type="button"
-            >
-              Add to Cart
-            </button>
+            <AddToCartButton product={product} />
           </div>
         </div>
 

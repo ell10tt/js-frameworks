@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useCart } from "@/context/CartContext";
 
 const navigationItems = [
   { href: "/", label: "Home" },
@@ -8,6 +11,12 @@ const navigationItems = [
 ];
 
 export default function Header() {
+  const { state } = useCart();
+  const cartItemCount = state.items.reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
+
   return (
     <header className="border-b border-[#eaeaea] bg-white">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-5 gap-y-4 px-5 py-4 sm:flex-nowrap sm:px-8 sm:py-5 lg:px-10">
@@ -33,7 +42,7 @@ export default function Header() {
                   className="rounded-sm transition-colors hover:text-[#8377d1] focus-visible:text-[#8377d1] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8377d1]"
                   href={href}
                 >
-                  {label}
+                  {href === "/cart" ? `${label} (${cartItemCount})` : label}
                 </Link>
               </li>
             ))}
