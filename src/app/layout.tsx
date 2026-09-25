@@ -9,6 +9,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "AllStore",
   description: "A simple online store.",
+  icons: {
+    icon: "/images/allstore-logo.svg",
+  },
 };
 
 interface RootLayoutProps {
