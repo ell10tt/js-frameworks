@@ -57,7 +57,7 @@ export default function ProductCatalog({ products }: ProductCatalogProps) {
 
   return (
     <>
-      <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+      <div className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
         <Search products={products} />
         <div className="w-full sm:w-56">
           <label
@@ -67,7 +67,7 @@ export default function ProductCatalog({ products }: ProductCatalogProps) {
             Sort products
           </label>
           <select
-            className="mt-2 w-full rounded-sm border border-[#eaeaea] bg-white px-4 py-3 text-base text-[#333333] outline-none transition-colors focus:border-[#8377d1] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8377d1]"
+            className="mt-2 w-full rounded-full border border-[#eaeaea] bg-white px-5 py-3 text-base text-[#333333] outline-none transition-colors focus:border-[#9cbfa7] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9cbfa7]"
             id="product-sort"
             onChange={(event) => setSortOption(event.target.value as SortOption)}
             value={sortOption}
@@ -80,7 +80,7 @@ export default function ProductCatalog({ products }: ProductCatalogProps) {
         </div>
       </div>
 
-      <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 lg:gap-8">
+      <div className="mt-12 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {sortedProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

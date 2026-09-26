@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 
 const navigationItems = [
@@ -12,34 +13,34 @@ const navigationItems = [
 
 export default function Header() {
   const { state } = useCart();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const cartItemCount = state.items.reduce(
     (total, item) => total + item.quantity,
     0,
   );
 
   return (
-    <header className="border-b border-[#eaeaea] bg-white">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-5 gap-y-4 px-5 py-4 sm:flex-nowrap sm:px-8 sm:py-5 lg:px-10">
+    <header className="relative z-30 h-20 bg-white">
+      <div className="mx-auto flex h-full max-w-[1200px] items-center justify-between px-5 sm:px-8 lg:px-5">
         <Link
           aria-label="AllStore home"
-          className="shrink-0 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8377d1]"
+          className="shrink-0 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9cbfa7]"
           href="/"
         >
           <Image
             alt="AllStore"
-            className="h-auto w-32 sm:w-36"
+            className="h-auto w-30 sm:w-[157px]"
             height={61}
-            priority
             src="/images/allstore-logo.svg"
             width={244}
           />
         </Link>
-        <nav aria-label="Primary navigation" className="w-full sm:w-auto">
-          <ul className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 text-sm font-medium text-[#333333] sm:justify-end sm:gap-x-8 sm:text-base">
+        <nav aria-label="Primary navigation" className="hidden md:block">
+          <ul className="flex items-center gap-16 text-2xl font-normal text-[#272932]">
             {navigationItems.map(({ href, label }) => (
               <li key={href}>
                 <Link
-                  className="rounded-sm transition-colors hover:text-[#8377d1] focus-visible:text-[#8377d1] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8377d1]"
+                  className="rounded-sm transition-colors hover:text-[#9cbfa7] focus-visible:text-[#9cbfa7] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9cbfa7]"
                   href={href}
                 >
                   {href === "/cart" ? `${label} (${cartItemCount})` : label}
@@ -48,7 +49,58 @@ export default function Header() {
             ))}
           </ul>
         </nav>
+        <button
+          aria-controls="mobile-navigation"
+          aria-expanded={isMenuOpen}
+          aria-label="Open menu"
+          className="flex h-10 w-10 items-center justify-center rounded-sm text-[#272932] transition-colors hover:text-[#9cbfa7] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9cbfa7] md:hidden"
+          onClick={() => setIsMenuOpen(true)}
+          type="button"
+        >
+          <svg aria-hidden="true" fill="none" height="24" viewBox="0 0 24 24" width="24">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" strokeLinecap="round" strokeWidth="2" />
+          </svg>
+        </button>
       </div>
+      <div
+        aria-hidden={!isMenuOpen}
+        className={`fixed inset-0 z-40 bg-black/50 transition-opacity md:hidden ${isMenuOpen ? "opacity-100" : "pointer-events-none opacity-0"}`}
+        onClick={() => setIsMenuOpen(false)}
+      />
+      <aside
+        aria-label="Mobile navigation"
+        className={`fixed inset-y-0 right-0 z-50 flex w-70 flex-col bg-white p-5 shadow-[-5px_0_15px_rgba(0,0,0,0.1)] transition-transform md:hidden ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
+        id="mobile-navigation"
+      >
+        <div className="flex items-center justify-between border-b border-[#eaeaea] pb-4">
+          <span className="[font-family:var(--font-logo)] text-2xl text-[#333333]">Menu</span>
+          <button
+            aria-label="Close menu"
+            className="rounded-sm p-1 text-[#333333] transition-colors hover:text-[#9cbfa7] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9cbfa7]"
+            onClick={() => setIsMenuOpen(false)}
+            type="button"
+          >
+            <svg aria-hidden="true" fill="none" height="24" viewBox="0 0 24 24" width="24">
+              <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" strokeLinecap="round" strokeWidth="2" />
+            </svg>
+          </button>
+        </div>
+        <nav aria-label="Mobile menu" className="mt-7">
+          <ul className="space-y-5 text-xl font-medium text-[#333333]">
+            {navigationItems.map(({ href, label }) => (
+              <li key={href}>
+                <Link
+                  className="rounded-sm transition-colors hover:text-[#9cbfa7] focus-visible:text-[#9cbfa7] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9cbfa7]"
+                  href={href}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {href === "/cart" ? `${label} (${cartItemCount})` : label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </aside>
     </header>
   );
 }

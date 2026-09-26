@@ -14,8 +14,8 @@ export default function CartPage() {
   if (!state.hasHydrated) {
     return (
       <section className="w-full">
-        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
-          <h1 className="text-3xl font-semibold tracking-tight text-[#333333] sm:text-4xl">
+        <div className="mx-auto max-w-[1000px] px-5 py-10 sm:px-8 lg:px-5">
+          <h1 className="[font-family:var(--font-logo)] text-center text-3xl font-normal text-[#333333] sm:text-4xl">
             Shopping Cart
           </h1>
           <p className="mt-8 text-base leading-7 text-[#5c5c5c]" role="status">
@@ -29,16 +29,16 @@ export default function CartPage() {
   if (state.items.length === 0) {
     return (
       <section className="w-full">
-        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
-          <h1 className="text-3xl font-semibold tracking-tight text-[#333333] sm:text-4xl">
+        <div className="mx-auto max-w-[1000px] px-5 py-10 sm:px-8 lg:px-5">
+          <h1 className="[font-family:var(--font-logo)] text-center text-3xl font-normal text-[#333333] sm:text-4xl">
             Shopping Cart
           </h1>
-          <div className="mt-8 rounded-lg border border-[#eaeaea] bg-[#f9f9f9] p-6 sm:p-8">
+          <div className="mt-8 rounded-sm border border-[#eaeaea] bg-white p-6 sm:p-8">
             <p className="text-base leading-7 text-[#5c5c5c]">
               Your cart is empty.
             </p>
             <Link
-              className="mt-5 inline-flex rounded-sm bg-[#8377d1] px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-[#6f64bb] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8377d1]"
+              className="mt-5 inline-flex rounded-sm bg-[#9cbfa7] px-8 py-3 text-base font-medium text-white transition-[filter] hover:brightness-90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9cbfa7]"
               href="/"
             >
               Browse products
@@ -63,16 +63,16 @@ export default function CartPage() {
 
   return (
     <section className="w-full">
-      <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
-        <h1 className="text-3xl font-semibold tracking-tight text-[#333333] sm:text-4xl">
+      <div className="mx-auto max-w-[1000px] px-5 py-10 sm:px-8 lg:px-5">
+        <h1 className="[font-family:var(--font-logo)] text-center text-3xl font-normal text-[#333333] sm:text-4xl">
           Shopping Cart
         </h1>
-        <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start">
-          <ul className="space-y-5">
+        <div className="mt-8">
+          <ul className="border-t border-[#eaeaea]">
             {state.items.map(({ product, quantity }) => (
               <li key={product.id}>
-                <article className="flex flex-col gap-5 rounded-lg border border-[#eaeaea] bg-white p-5 sm:flex-row sm:items-center sm:p-6">
-                  <div className="relative aspect-square w-full shrink-0 overflow-hidden rounded-sm bg-[#f9f9f9] sm:h-28 sm:w-28">
+                <article className="flex flex-col gap-5 border-b border-[#eaeaea] py-5 sm:flex-row sm:items-center">
+                  <div className="relative aspect-square w-full shrink-0 overflow-hidden rounded-lg border border-[#eaeaea] bg-white sm:h-25 sm:w-25">
                     <Image
                       alt={product.image.alt || product.title}
                       className="object-contain p-4"
@@ -98,7 +98,7 @@ export default function CartPage() {
                         </dd>
                       </div>
                     </dl>
-                    <div className="mt-5 flex flex-wrap items-end justify-between gap-4">
+                    <div className="mt-5 flex flex-wrap items-end justify-between gap-4 sm:mt-3">
                       <div>
                         <p className="text-sm text-[#5c5c5c]">Quantity</p>
                         <div
@@ -108,7 +108,7 @@ export default function CartPage() {
                         >
                           <button
                             aria-label={`Decrease quantity of ${product.title}`}
-                            className="flex h-10 w-10 items-center justify-center text-lg text-[#333333] transition-colors hover:bg-[#f9f9f9] hover:text-[#8377d1] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8377d1]"
+                            className="flex h-8 w-8 items-center justify-center rounded-sm border border-[#eaeaea] text-lg text-[#333333] transition-colors hover:border-[#9cbfa7] hover:bg-[#9cbfa7] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9cbfa7]"
                             onClick={() =>
                               dispatch({
                                 type: "DECREASE_QUANTITY",
@@ -128,7 +128,7 @@ export default function CartPage() {
                           </span>
                           <button
                             aria-label={`Increase quantity of ${product.title}`}
-                            className="flex h-10 w-10 items-center justify-center text-lg text-[#333333] transition-colors hover:bg-[#f9f9f9] hover:text-[#8377d1] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8377d1]"
+                            className="flex h-8 w-8 items-center justify-center rounded-sm border border-[#eaeaea] text-lg text-[#333333] transition-colors hover:border-[#9cbfa7] hover:bg-[#9cbfa7] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9cbfa7]"
                             onClick={() =>
                               dispatch({
                                 type: "INCREASE_QUANTITY",
@@ -142,7 +142,7 @@ export default function CartPage() {
                         </div>
                       </div>
                       <button
-                        className="rounded-sm border border-[#eaeaea] px-4 py-2 text-sm font-medium text-[#5c5c5c] transition-colors hover:border-[#8377d1] hover:text-[#8377d1] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8377d1]"
+                        className="rounded-sm bg-[#ff6b6b] px-4 py-2 text-sm font-medium text-white transition-[filter] hover:brightness-90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ff6b6b]"
                         onClick={() => {
                           dispatch({ type: "REMOVE_ITEM", productId: product.id });
                           toast.success("Removed from cart");
@@ -159,22 +159,22 @@ export default function CartPage() {
           </ul>
           <aside
             aria-labelledby="cart-summary-heading"
-            className="rounded-lg border border-[#eaeaea] bg-[#f9f9f9] p-5 sm:p-6"
+            className="ml-auto mt-10 max-w-sm text-right"
           >
             <h2
-              className="text-xl font-medium text-[#333333]"
+              className="text-3xl font-medium text-[#333333]"
               id="cart-summary-heading"
             >
               Order summary
             </h2>
-            <div className="mt-5 flex items-baseline justify-between gap-4 border-b border-[#eaeaea] pb-5">
-              <span className="text-base text-[#5c5c5c]">Total</span>
-              <span className="text-2xl font-semibold text-[#333333]">
+            <div className="mt-5 flex items-baseline justify-end gap-4 border-b border-[#eaeaea] pb-5">
+              <span className="text-lg text-[#5c5c5c]">Total</span>
+              <span className="text-2xl font-medium text-[#333333]">
                 {formatPrice(cartTotal)}
               </span>
             </div>
             <button
-              className="mt-5 w-full rounded-sm bg-[#8377d1] px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-[#6f64bb] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8377d1]"
+              className="mt-5 w-full rounded-sm bg-[#9cbfa7] px-5 py-4 text-base font-medium text-white transition-[filter] hover:brightness-90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9cbfa7]"
               onClick={handleCheckout}
               type="button"
             >

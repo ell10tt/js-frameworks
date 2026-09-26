@@ -7,16 +7,12 @@ export const dynamic = "force-dynamic";
 export default function Home() {
   return (
     <div className="w-full">
-      <section className="bg-[#f9f9f9]">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24 lg:px-10 lg:py-32">
-          <div className="max-w-2xl border-l-4 border-[#9cbfa7] pl-5 sm:pl-7">
-            <h1 className="text-4xl font-semibold tracking-tight text-[#333333] sm:text-5xl lg:text-6xl">
-              A simple way to shop.
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-7 text-[#5c5c5c] sm:mt-6 sm:text-lg sm:leading-8">
-              A calm foundation for a clear and convenient shopping experience.
-            </p>
-          </div>
+      <section className="bg-[#8377d1] px-5 py-7 text-center text-[#f5f5f5] sm:px-8 sm:py-8">
+        <div className="mx-auto max-w-[1200px]">
+          <h1 className="text-2xl font-bold sm:text-3xl">
+            Today&apos;s sales. We have discounts up to 90%!
+          </h1>
+          <p className="mt-2 text-xl sm:text-2xl">Your discount code: NOR0FF</p>
         </div>
       </section>
 

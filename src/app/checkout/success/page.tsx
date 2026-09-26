@@ -2,17 +2,20 @@ import Link from "next/link";
 
 export default function CheckoutSuccessPage() {
   return (
-    <section className="w-full">
-      <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
-        <div className="max-w-xl rounded-lg border border-[#eaeaea] bg-[#f9f9f9] p-6 sm:p-8">
-          <h1 className="text-3xl font-semibold tracking-tight text-[#333333] sm:text-4xl">
+    <section className="flex min-h-[70vh] w-full items-center justify-center bg-[#f9f9f9] px-5 py-10 sm:px-8">
+      <div className="w-full max-w-lg rounded-lg bg-white px-5 py-10 text-center shadow-[0_10px_30px_rgba(0,0,0,0.05)] sm:px-10 sm:py-15">
+        <div aria-hidden="true" className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#9cbfa7] text-4xl text-white">
+          ✓
+        </div>
+        <div className="mt-8">
+          <h1 className="text-3xl font-medium text-[#333333]">
             Thank you for your purchase!
           </h1>
-          <p className="mt-4 text-base leading-7 text-[#5c5c5c]">
+          <p className="mt-5 text-lg text-[#333333]">
             Your order has been confirmed.
           </p>
           <Link
-            className="mt-6 inline-flex rounded-sm bg-[#8377d1] px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-[#6f64bb] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8377d1]"
+            className="mt-10 inline-flex rounded-sm bg-[#9cbfa7] px-9 py-4 text-base font-medium text-white transition-[filter] hover:brightness-90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9cbfa7]"
             href="/"
           >
             Continue shopping

@@ -20,7 +20,7 @@ function getFieldClassName(hasError: boolean) {
     ? "border-red-700 focus:border-red-700 focus-visible:ring-red-700"
     : "border-[#eaeaea] focus:border-[#8377d1] focus-visible:ring-[#8377d1]";
 
-  return `mt-2 w-full rounded-sm border bg-white px-4 py-3 text-base text-[#333333] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 ${stateClassName}`;
+  return `mt-2 w-full rounded-sm border bg-white px-3 py-3 text-base text-[#333333] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 ${stateClassName}`;
 }
 
 export default function ContactForm() {
@@ -61,7 +61,7 @@ export default function ContactForm() {
 
   return (
     <form
-      className="mt-8 rounded-lg border border-[#eaeaea] bg-[#f9f9f9] p-5 sm:mt-10 sm:p-8"
+      className="mt-8"
       noValidate
       onSubmit={handleSubmit}
     >
@@ -186,7 +186,7 @@ export default function ContactForm() {
         </div>
       </div>
       <button
-        className="mt-6 inline-flex rounded-sm bg-[#8377d1] px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-[#6f64bb] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8377d1]"
+        className="mt-6 inline-flex w-full justify-center rounded-sm bg-[#9cbfa7] px-5 py-3 text-base font-medium text-white transition-[filter] hover:brightness-90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9cbfa7]"
         type="submit"
       >
         Send Message

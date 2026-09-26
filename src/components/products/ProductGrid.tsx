@@ -6,12 +6,12 @@ export default async function ProductGrid() {
 
   return (
     <section aria-labelledby="products-heading">
-      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
+      <div className="mx-auto max-w-[1200px] px-5 py-12 sm:px-8 sm:py-16 lg:px-5">
         <h2
           id="products-heading"
-          className="text-3xl font-semibold tracking-tight text-[#333333] sm:text-4xl"
+          className="text-center text-3xl font-medium text-[#333333] sm:text-4xl"
         >
-          Products
+          All Products
         </h2>
         {products.length === 0 ? (
           <p className="mt-8 text-base leading-7 text-[#5c5c5c]" role="status">

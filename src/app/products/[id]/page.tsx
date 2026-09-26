@@ -32,12 +32,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <div className="w-full">
-      <article className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-14">
-          <div className="relative aspect-square overflow-hidden rounded-lg bg-[#f9f9f9]">
+      <article className="mx-auto max-w-[1100px] px-5 py-10 sm:px-8 sm:py-12 lg:px-5 lg:py-15">
+        <div className="grid gap-10 md:grid-cols-[1fr_1.2fr] md:items-start md:gap-16">
+          <div className="relative aspect-square overflow-hidden rounded-sm border border-[#eaeaea] bg-white">
             <Image
               alt={product.image.alt || product.title}
-              className="object-contain p-8 sm:p-12"
+              className="object-contain p-5"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
               src={product.image.url}
@@ -45,14 +45,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
 
           <div>
-            <h1 className="text-3xl font-semibold tracking-tight text-[#333333] sm:text-4xl lg:text-5xl">
+            <h1 className="text-3xl font-medium text-[#9b98d5] sm:text-4xl">
               {product.title}
             </h1>
             <p
               aria-label={`Rating: ${product.rating} out of 5`}
               className="mt-5 text-base font-medium text-[#5c5c5c]"
             >
-              <span aria-hidden="true" className="text-[#8377d1]">
+              <span aria-hidden="true" className="text-[#9cbfa7]">
                 ★
               </span>{" "}
               {product.rating.toFixed(1)} / 5
@@ -69,7 +69,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 )}
               </p>
             </div>
-            <p className="mt-8 text-base leading-7 text-[#5c5c5c] sm:text-lg sm:leading-8">
+            <p className="mt-8 text-base leading-7 text-[#5c5c5c]">
               {product.description}
             </p>
 
@@ -78,7 +78,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 {product.tags.map((tag) => (
                   <li
                     key={tag}
-                    className="rounded-sm bg-[#f9f9f9] px-3 py-1 text-sm text-[#5c5c5c]"
+                  className="rounded-sm bg-[#f9f9f9] px-2 py-1 text-sm text-[#5c5c5c]"
                   >
                     {tag}
                   </li>
@@ -90,19 +90,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
         </div>
 
-        <section aria-labelledby="reviews-heading" className="mt-16 border-t border-[#eaeaea] pt-12 sm:mt-20 sm:pt-16">
+        <section aria-labelledby="reviews-heading" className="mt-12 border-t border-[#eaeaea] pt-8 sm:mt-16">
           <h2
             id="reviews-heading"
-            className="text-2xl font-semibold tracking-tight text-[#333333] sm:text-3xl"
+            className="text-2xl font-medium text-[#333333]"
           >
             Reviews
           </h2>
           {product.reviews.length > 0 ? (
-            <ul className="mt-8 grid gap-5 md:grid-cols-2">
+            <ul className="mt-5">
               {product.reviews.map((review) => (
                 <li
                   key={review.id}
-                  className="rounded-lg border border-[#eaeaea] bg-white p-5"
+                  className="border-b border-[#eaeaea] py-4 last:border-b-0"
                 >
                   <article>
                     <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
@@ -113,7 +113,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                         aria-label={`Rating: ${review.rating} out of 5`}
                         className="text-sm font-medium text-[#5c5c5c]"
                       >
-                        <span aria-hidden="true" className="text-[#8377d1]">
+                        <span aria-hidden="true" className="text-[#9cbfa7]">
                           ★
                         </span>{" "}
                         {review.rating.toFixed(1)} / 5
